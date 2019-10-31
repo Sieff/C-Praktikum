@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
   {
       printf("acht");
   }
- if (val == 9)
+  if (val == 9)
   {
       printf("neun");
   }
