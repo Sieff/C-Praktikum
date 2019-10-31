@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-void fibWhile()
+void fib_while()
 {
-	int a = 0, b= 1, i = 0;
+    int a = 0, b= 1, i = 0;
 	int tmp;
 	while(i <= 21)
 	{
@@ -13,11 +13,12 @@ void fibWhile()
 		a = tmp;	
 		i++;
 	}
+	printf("\n");
 }
 
-void fibDoWhile()
+void fib_do_while()
 {
-	int a = 0, b= 1, i = 0;
+    int a = 0, b= 1, i = 0;
 	int tmp;
 	do
 	{
@@ -27,11 +28,12 @@ void fibDoWhile()
 		a = tmp;			
 		i++;
 	} while(i <= 21);
+	printf("\n");
 }
 
-void fibFor()
+void fib_for()
 {
-	int a = 0, b= 1, i = 0;
+    int a = 0, b= 1, i = 0;
 	int tmp;
 	for(int i = 0; i<= 21; i++)
 	{
@@ -44,11 +46,9 @@ void fibFor()
 
 int main()
 {
-	fibWhile();
-	printf("\n");
-	fibDoWhile();
-	printf("\n");
-	fibFor();
-	printf("\n");
-	return 0;	
+    fib_while();
+    fib_do_while();
+    fib_for();
+
+    return 0;
 }
