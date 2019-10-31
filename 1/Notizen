@@ -1,0 +1,22 @@
+Aufgabe 1:
+
+Declaration: Variable oder Funktion wird deklariert um sie dem System bekanntzumachen
+
+Expression: Ein Ausdruck, der ausgewertet werden sein
+
+Literal: Zeichen(-Ketten) von versch. Wertetypen, dem System bekannt
+
+Statement: Anweisung an das System
+
+Operator: definiert Operation auf einem (odere mehreren) Wertetypen
+
+Condition: Bedingung, die zu wahr oder falsch ausgewertet werden kann
+
+
+
+Aufgabe 3:
+
+Beide Programme recht ähnlich.
+Zu Beginn eine Auflistung von Strings, die ausgegeben werden können.
+Darauf folgt ein großer Main-Block mit vielen Anweisungen.
+Bei Switch: Ein Block mit vielen ".long" Ausdrücken.
