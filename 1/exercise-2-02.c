@@ -33,7 +33,7 @@ void fib_do_while()
 
 void fib_for()
 {
-    int a = 0, b= 1, i = 0;
+    int a = 0, b= 1;
 	int tmp;
 	for(int i = 0; i<= 21; i++)
 	{
