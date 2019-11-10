@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 /**
-Hilfsmethode zur berechnung der Länge von Strings.
+Hilfsmethode zur Berechnung der Länge von Strings.
 */
 int laengeVonString(char string[])
 {
