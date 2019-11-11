@@ -56,7 +56,7 @@ void string_concat (char out[], char string1[], char string2[], int maxSize)
 int main (void)
 {
 	char out[128] = {'\0'};
-	string_concat(out, "\0", "World", (sizeof(out) / sizeof(*out)));
+	string_concat(out, "Hello ", "World!", (sizeof(out) / sizeof(*out)));
 	printf("%s\n", out);
 	return 0;
 }
