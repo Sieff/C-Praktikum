@@ -39,7 +39,7 @@ int *zeigerAufArray()
 	return array;
 }
 /*
-Es wird auf nicht reservierten Speicher zugegriffen.
+Es wird auf nicht reservierten Speicher an der Adresse *(zeiger +1) zugegriffen.
 */
 void zugriffNichtReservierterSpeicher()
 {
