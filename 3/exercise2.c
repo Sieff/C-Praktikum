@@ -5,7 +5,7 @@ int* extendByOne(int array[], int arraySize)
 {	
 	int *ret;
 	ret = malloc(sizeof(int) * (arraySize + 1));
-	if (array == NULL)
+	if (ret == NULL)
 	{
 		printf("can not allocate memory.");
 		exit(0);
