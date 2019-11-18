@@ -2,7 +2,7 @@
 #include<stddef.h>
 #include<stdio.h>
 
-int findCharPosition(char* string, char searchCharacter, char **out_pointer) {
+int findCharPosition(char* string, char searchCharacter, char** out_pointer) {
 	int position = 0;
 	while(string[position] != '\0' && string[position] != searchCharacter)
 	{
@@ -11,10 +11,13 @@ int findCharPosition(char* string, char searchCharacter, char **out_pointer) {
 	if(string[position] == '\0')
 	{
 		position = -1;
+		if(out_pointer)
+			*out_pointer = NULL;	
 	}
 	else
 	{
-		*out_pointer = &string[position];
+		if (out_pointer)
+			*out_pointer = &string[position];
 	}
 	return position;
 }
@@ -25,7 +28,6 @@ int main() {
 
 	int result = findCharPosition(string1, 'a', NULL);
 	assert(result == -1);
-
 	result = findCharPosition(string2, ' ', NULL);
 	assert(result == 7);
 
@@ -38,5 +40,5 @@ int main() {
 	
 	result = findCharPosition(string1, 'a', &charPosition);
 	assert(result == -1);
-	assert(!charPosition); 
+	assert(!charPosition);
 }
