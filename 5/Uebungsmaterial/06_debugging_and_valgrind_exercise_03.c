@@ -162,7 +162,9 @@ void deleteAt(node * ptr, int position)
 	node * currentnextnext = currentnext->next;
 	currentnextnext->prev = current;
 
+
 	free(currentnext->coordinate);
+	free(currentnext);
 }
 
 // Lösche alle Elemente zwischen den Positionen pos1 und pos2
@@ -187,6 +189,7 @@ void deleteRange(node * ptr, int pos1, int pos2)
 		if(k >= pos1)
 		{
 			free(endnode->coordinate);
+			free(endnode);
 		}
 
 
