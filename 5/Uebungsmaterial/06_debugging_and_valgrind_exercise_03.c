@@ -36,33 +36,35 @@ void freeStructStorage(myCoordinate * ptr)
 //##############################################################################
 
 // Füge ein neues Element am Ende des Struct-Speichers ein
-void insert(myCoordinate * ptr, myCoordinate coordinate)
+void insert(myCoordinate * ptr, myCoordinate * coordinate)
 {
 	int i = 0;
-	while((int)ptr[i] != 0)
+	int test = (int) *(ptr + i);
+	while(test != 0)
 	{
 		i++;
+		test = (int) *(ptr + i);
 	}
- 	if(ptr[i] + 1 != 0)
+ 	if(ptr + i + 1 != 0)
  	{
  		ptr = realloc(ptr, i*2*(sizeof(myCoordinate)));
  	}
- 	&ptr[i+1] = coordinate;
+ 	ptr[i+1] = *coordinate;
 }
 
 // Füge ein neues Element an Position pos ein
 void insertAt(myCoordinate * ptr, int j, myCoordinate coordinate)
 {
 	int i = 0;
-	while(ptr[i] != 0)
+	while(*(ptr + i) != 0)
 	{
 		i++;
 	}
- 	if(ptr[i] + 1 != 0)
+ 	if(ptr + i + 1 != 0)
  	{
  		ptr = realloc(ptr, i*2*(sizeof(myCoordinate)));
  	}
- 	if(ptr[j] != 0)
+ 	if(ptr + j != 0)
  	{
  		for(int k = i; k >= j; k--)
  		{
@@ -90,9 +92,9 @@ TODO printRange(TODO)
 void printAll(myCoordinate * ptr)
 {
 	int i = 0;
-	while(ptr[i] != 0)
+	while(ptr + i != 0)
 	{
-		printStruct(ptr[i]);
+		printStruct(ptr + i);
 	}
 }
 /*
@@ -152,7 +154,7 @@ void test1()
 
 	freeStructStorage(storage);
 }
-
+/*
 // Hinzufügen und löschen einzelner Elemente
 void test2()
 {
@@ -182,6 +184,7 @@ void test2()
 
 	freeStructStorage(storage);
 }
+
 
 // Hinzufügen und Löschen ganzer Bereiche
 void test3()
@@ -214,7 +217,7 @@ void test3()
 
 	freeStructStorage(storage);
 }
-
+*/
 //##############################################################################
 //##############################################################################
 //##############################################################################
