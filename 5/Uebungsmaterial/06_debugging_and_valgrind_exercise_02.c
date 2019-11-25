@@ -12,19 +12,19 @@ void method01(int eingabe)
 	{
 		printf("Teilbar durch 4\n");
 	}
-	else if(eingabe%2 == 0)
+	if(eingabe%2 == 0) //Kommentar
 	{
 		printf("Teilbar durch 2\n");
 	}
-	else if(eingabe%3 == 0)
+	if(eingabe%3 == 0) //Kommentar
 	{
 		printf("Teilbar durch 3\n");
 	}
-	else if(eingabe%5 == 0)
+	if(eingabe%5 == 0) //Kommentar
 	{
 		printf("Teilbar durch 5\n");
 	}
-	else
+	if(eingabe%2 != 0 && eingabe%3 != 0 && eingabe%4 != 0 && eingabe%5 != 0) //Kommentar
 	{
 		printf("Eingabe ist nicht teilbar durch 2,3,4 oder 5\n");
 	}
@@ -36,12 +36,12 @@ void method01(int eingabe)
  * Die Rückgabe soll der Eingabe entsprechen
  * Bsp: method02(3) -> "Eingabe == Ausgabe: 3 == 3"
  */
-void method02(int eingabe)
+void method02(double eingabe) //Kommentar
 {
 	int ausgabe;
 	ausgabe = (eingabe/2)*2;
 
-	printf("Eingabe == Ausgabe: %d == %d\n", eingabe, ausgabe);
+	printf("Eingabe == Ausgabe: %d == %d\n", (int) eingabe, ausgabe); //Kommentar
 }
 
 /*
@@ -57,7 +57,7 @@ int method03(int eingabe)
 	else if(eingabe > 0)
 	{
 		int rekEingabe = eingabe;
-		return eingabe * method03(rekEingabe--);
+		return eingabe * method03(--rekEingabe); //Kommentar
 	}
 }
 
@@ -70,8 +70,8 @@ void method04(int eingabe)
 	while(eingabe != 0)
 	{
 		int rest = eingabe %10;
-		printf("%s", rest);
-		eingabe = (eingabe-rest)/20;
+		printf("%d", rest); //Kommentar
+		eingabe = (eingabe-rest)/10; //Kommentar
 	}
 	printf("\n");
 }

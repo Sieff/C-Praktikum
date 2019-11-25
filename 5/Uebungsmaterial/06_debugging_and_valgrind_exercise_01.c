@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-void 0OO00O(int eingabe)
+int hoch2(int eingabe) //Kommentar
 {
 	return eingabe*eingabe;
 }
 
-char *testfunktion00()
+char testfunktion00() //Kommentar
 {
 	char output = 'A';
 	printf("Diese Funktion testet auch etwas\n");
@@ -21,24 +21,24 @@ void testfunktion01(char eingabe)
 
 int main()
 {
-	int counter == 0;
-	char beliebiges-zeichen = 'J';
+	int counter = 0; //Kommentar
+	char beliebigesZeichen = 'J'; //Kommentar
 	char charOut;
 
-	for(;;;)
+	for(;;) //Kommentar
 	{
-		counter+++;
-		0OO00O(counter, beliebiges-zeichen);
+		counter++; //Kommentar
+		hoch2(counter); //Kommentar
 		charOut = testfunktion00();
 		testfunktion01(charOut);
-		if(counter%10 = 0)
+		if(counter%10 == 0) //Kommentar
 		{
 			break;
 		}
 	}
-	testfunktion();
+	testfunktion00(); //Kommentar
 
-	printf("Das Programm konnte erfolgreich kompiliert werden!\n")
+	printf("Das Programm konnte erfolgreich kompiliert werden!\n");
 	return 0;
 }
 

@@ -20,34 +20,60 @@ void printStruct(myCoordinate *input)
 
 // Eine neue Struct-Speicher-Datenstruktur wird angelegt und ist nach Rückgabe
 // betriebsbereit
-TODO *createStructStorage(TODO)
+myCoordinate *createStructStorage()
 {
-	//TODO
+	myCoordinate * ptr = calloc(1, sizeof(myCoordinate));
+	return ptr;
 }
 
 // Der Speicher der Struct-Speicher-Datenstruktur sowie aller noch gespeicherten
 // Koordinaten-Structs wird freigegeben
-TODO freeStructStorage(TODO)
+void freeStructStorage(myCoordinate * ptr)
 {
-	//TODO
+	free(ptr);
 }
 
 //##############################################################################
 
 // Füge ein neues Element am Ende des Struct-Speichers ein
-TODO insert(TODO)
+void insert(myCoordinate * ptr, myCoordinate coordinate)
 {
-	//TODO
+	int i = 0;
+	while((int)ptr[i] != 0)
+	{
+		i++;
+	}
+ 	if(ptr[i] + 1 != 0)
+ 	{
+ 		ptr = realloc(ptr, i*2*(sizeof(myCoordinate)));
+ 	}
+ 	&ptr[i+1] = coordinate;
 }
 
 // Füge ein neues Element an Position pos ein
-TODO insertAt(TODO)
+void insertAt(myCoordinate * ptr, int j, myCoordinate coordinate)
 {
-	//TODO
+	int i = 0;
+	while(ptr[i] != 0)
+	{
+		i++;
+	}
+ 	if(ptr[i] + 1 != 0)
+ 	{
+ 		ptr = realloc(ptr, i*2*(sizeof(myCoordinate)));
+ 	}
+ 	if(ptr[j] != 0)
+ 	{
+ 		for(int k = i; k >= j; k--)
+ 		{
+ 			ptr[k+1] = ptr[k];
+ 		}
+ 	}
+ 	ptr[j] = coordinate;
 }
 
 //##############################################################################
-
+/*
 // Gib die Koordinaten des Elements an Position pos aus
 TODO printAt(TODO)
 {
@@ -59,13 +85,17 @@ TODO printRange(TODO)
 {
 	//TODO
 }
-
+*/
 // Gib die Koordinaten aller Elemente aus
-TODO printAll(TODO)
+void printAll(myCoordinate * ptr)
 {
-	//TODO
+	int i = 0;
+	while(ptr[i] != 0)
+	{
+		printStruct(ptr[i]);
+	}
 }
-
+/*
 //##############################################################################
 
 // Lösche das Element an Position pos
@@ -97,7 +127,7 @@ TODO printSize(TODO)
 
 	printf("Gesamtzahl Elemente: %d\n", numElements);
 }
-
+*/
 //##############################################################################
 //##############################################################################
 //##############################################################################
@@ -193,8 +223,8 @@ int main()
 {
 	test1();
 	printf("\n");
-	test2();
+	//test2();
 	printf("\n");
-	test3();
+	//test3();
 	return 0;
 }
