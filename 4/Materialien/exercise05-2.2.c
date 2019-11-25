@@ -2,6 +2,11 @@
 #include<stddef.h>
 #include<stdio.h>
 
+/**
+* Funktion sucht die Position eines Characters in einem String
+* Wenn der Character im String ist die Position der return, sonst -1
+* out_pointer beinhaltet den gefundenen Char im String oder NULL
+*/
 int findCharPosition(char* string, char searchCharacter, char** out_pointer) {
 	int position = 0;
 	while(string[position] != '\0' && string[position] != searchCharacter)

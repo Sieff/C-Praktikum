@@ -1,5 +1,10 @@
 #include <assert.h>
 
+
+/**
+* Funktion teilt zwei ganze Zahlen ganzzahlig
+* Gibt das Ergebnis zurück, belegt den Pointer mit dem Rest 
+*/
 int divide(int a, int b, int * rest) {
 	*rest = a%b;
 	return a/b;
