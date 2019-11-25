@@ -43,14 +43,6 @@ node * createStructStorage()
 	return head;
 }
 
-// Der Speicher der Struct-Speicher-Datenstruktur sowie aller noch gespeicherten
-// Koordinaten-Structs wird freigegeben
-void freeStructStorage(node* ptr)
-{
-	ptr->next = NULL;
-	ptr->prev = NULL;
-	free(ptr);
-}
 
 //##############################################################################
 
@@ -169,6 +161,8 @@ void deleteAt(node * ptr, int position)
 	current->next = currentnext->next;
 	node * currentnextnext = currentnext->next;
 	currentnextnext->prev = current;
+
+	free(currentnext->coordinate);
 }
 
 // Lösche alle Elemente zwischen den Positionen pos1 und pos2
@@ -187,7 +181,15 @@ void deleteRange(node * ptr, int pos1, int pos2)
 	node * endnode = ptr;
 	for(int k = 0; k <= pos2+1; k++)
 	{
+		
 		endnode = endnode->next;
+
+		if(k >= pos1)
+		{
+			free(endnode->coordinate);
+		}
+
+
 		if(endnode->coordinate == NULL)
 		{
 			return;
@@ -201,10 +203,27 @@ void deleteRange(node * ptr, int pos1, int pos2)
 // Leere die gesamte Struct-Speicher-Datenstruktur
 void deleteAll(node * ptr)
 {
+	node * current = ptr->next;
+	while(current->coordinate != NULL)
+	{
+		free(current->coordinate);
+		free(current);
+		current = current->next;
+	}
+
 	node * tail = ptr->prev;
 	tail->prev = tail->next;
 	ptr->next = ptr->prev;
 
+}
+
+// Der Speicher der Struct-Speicher-Datenstruktur sowie aller noch gespeicherten
+// Koordinaten-Structs wird freigegeben
+void freeStructStorage(node* ptr)
+{
+	deleteAll(ptr);
+	free(ptr->next);
+	free(ptr);
 }
 
 //##############################################################################
