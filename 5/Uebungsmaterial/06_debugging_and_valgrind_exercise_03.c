@@ -29,9 +29,7 @@ void printStruct(myCoordinate *input)
 // betriebsbereit
 node * createStructStorage()
 {
-	//node * head = NULL;
 	node * head = malloc(sizeof(node));
-	//node * tail = NULL;
 	node * tail = malloc(sizeof(node));
 
 	head->next = tail;
@@ -64,34 +62,7 @@ void insert(node * ptr, myCoordinate * coordinate)
 
 }
 
-// Füge ein neues Element an Position pos ein
-void insertAt(node * ptr, int j, myCoordinate * coordinate)
-{
-	node * current = ptr;
-	for(int k = 0; k<j; k++)
-	{
-		current = current->next;
-		if(current->coordinate == NULL)
-		{
-			insert(ptr, coordinate);
-		}
-	}
-
-	node * new = NULL;
-	new = malloc(sizeof(node));
-
-	new->coordinate = coordinate;
-	new->next = current->next;
-	new->prev = current;
-
-	current->next = new;
-	node * currentnext = current->next;
-	currentnext->prev = new;
-}
-
-//#############################################################################
-// Gib die Koordinaten des Elements an Position pos aus
-void printAt(node * ptr, int position)
+node * iterateTo(node * ptr, int position)
 {
 	node * current = ptr->next;
 	for(int k = 0; k < position; k++)
@@ -99,24 +70,49 @@ void printAt(node * ptr, int position)
 		current = current->next;
 		if(current->coordinate == NULL)
 		{
-			return;
+			break;
 		}
 	}
+	return current;
+}
+
+// Füge ein neues Element an Position pos ein
+void insertAt(node * ptr, int position, myCoordinate * coordinate)
+{
+	node * current = iterateTo(ptr, position);
+	if(current->coordinate == NULL)
+	{
+		printf("%s\n", "if");
+		insert(ptr, coordinate);
+	}
+	else
+	{
+	node * new = NULL;
+	new = malloc(sizeof(node));
+
+	new->coordinate = coordinate;
+	new->next = current;
+	new->prev = current->prev;
+
+	node * currentprev = current->prev;
+	currentprev->next = new;
+	current->prev = new; 
+	}
+	
+}
+
+//#############################################################################
+// Gib die Koordinaten des Elements an Position pos aus
+void printAt(node * ptr, int position)
+{
+	node * current = iterateTo(ptr, position);
 	printStruct(current->coordinate);
 }
 
 // Gib die Koordinaten der Elemente zwischen den Positionen pos1 und pos2 aus
 void printRange(node * ptr, int pos1, int pos2)
 {
-	node * current = ptr->next;
-	for(int k = 0; k < pos1; k++)
-	{
-		current = current->next;
-		if(current->coordinate == NULL)
-		{
-			return;
-		}
-	}
+	node * current = iterateTo(ptr, pos1);
 
 	for(int k = pos1; k <= pos2; k++)
 	{
@@ -147,76 +143,57 @@ void printAll(node * ptr)
 // Lösche das Element an Position pos
 void deleteAt(node * ptr, int position)
 {
-	node * current = ptr;
-	for(int k = 0; k <= position; k++)
-	{
-		current = current->next;
-		if(current->coordinate == NULL)
-		{
-			return;
-		}
-	}
+	node * current = iterateTo(ptr, position);
 
+	node * currentprev = current->prev;
+	currentprev->next = current->next;
 	node * currentnext = current->next;
-	current->next = currentnext->next;
-	node * currentnextnext = currentnext->next;
-	currentnextnext->prev = current;
+	currentnext->prev = current->prev;
 
 
-	free(currentnext->coordinate);
-	free(currentnext);
+	free(current->coordinate);
+	free(current);
 }
 
 // Lösche alle Elemente zwischen den Positionen pos1 und pos2
 void deleteRange(node * ptr, int pos1, int pos2)
 {
-	node * startnode = ptr;
-	for(int k = 0; k < pos1; k++)
+	node * nodeInFrontOfRange = iterateTo(ptr, pos1-1);
+	if (nodeInFrontOfRange->coordinate == NULL)
 	{
-		startnode = startnode->next;
-		if(startnode->coordinate == NULL)
+		return;
+	}
+
+	node * nodeBehindRange = ptr;
+	for(int i = 0; i < pos2 + 1; i++)
+	{
+		nodeBehindRange = nodeBehindRange->next;
+		if(nodeBehindRange->coordinate == NULL)
 		{
-			return;
+			break;
 		}
 	}
 
-	node * endnode = ptr;
-	for(int k = 0; k <= pos2+1; k++)
-	{
-		
-		endnode = endnode->next;
-
-		if(k >= pos1)
-		{
-			free(endnode->coordinate);
-			free(endnode);
-		}
-
-
-		if(endnode->coordinate == NULL)
-		{
-			return;
-		}
-	}
-
-	startnode->next = endnode;
-	endnode->prev = startnode;
+	nodeInFrontOfRange->next = nodeBehindRange;
+	nodeBehindRange->prev = nodeInFrontOfRange;
 }
 
 // Leere die gesamte Struct-Speicher-Datenstruktur
 void deleteAll(node * ptr)
 {
+	node * freeThis;
 	node * current = ptr->next;
 	while(current->coordinate != NULL)
 	{
-		free(current->coordinate);
-		free(current);
+		freeThis = current;
+		free(freeThis->coordinate);
+		free(freeThis);
 		current = current->next;
 	}
 
 	node * tail = ptr->prev;
-	tail->prev = tail->next;
-	ptr->next = ptr->prev;
+	tail->prev = ptr;
+	ptr->next = tail;
 
 }
 
@@ -240,6 +217,8 @@ void printSize(node * ptr)
 	while(current->coordinate != NULL)
 	{
 		numElements++;
+		myCoordinate * xy =  current->coordinate;
+		printf("%d\n", xy->x);
 		current = current->next;
 	}
 
@@ -319,8 +298,9 @@ void test3()
 		insert(storage,testArray[i]);
 		printAt(storage,i);
 	}
+	
 	printSize(storage);
-
+	/*
 	printRange(storage,0,4);
 	printf("\n");
 	deleteRange(storage,0,2);
@@ -334,6 +314,7 @@ void test3()
 	printSize(storage);
 
 	freeStructStorage(storage);
+	*/
 }
 
 //##############################################################################
