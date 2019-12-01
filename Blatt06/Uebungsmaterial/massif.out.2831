@@ -1,0 +1,828 @@
+desc: --time-unit=B
+cmd: ./a.out
+time_unit: B
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1032
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=1056
+mem_heap_B=1032
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=1096
+mem_heap_B=1056
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=1136
+mem_heap_B=1080
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=1176
+mem_heap_B=1104
+mem_heap_extra_B=72
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1176
+mem_heap_B=1104
+mem_heap_extra_B=72
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1104 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n1: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108D1F: test1 (06_debugging_and_valgrind_exercise_03.c:279)
+   n0: 24 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n1: 24 0x1087B7: createStructStorage (06_debugging_and_valgrind_exercise_03.c:35)
+  n1: 24 0x108D1F: test1 (06_debugging_and_valgrind_exercise_03.c:279)
+   n0: 24 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n1: 24 0x10888D: insert (06_debugging_and_valgrind_exercise_03.c:82)
+  n1: 24 0x108D36: test1 (06_debugging_and_valgrind_exercise_03.c:280)
+   n0: 24 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n0: 8 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=7
+#-----------
+time=1200
+mem_heap_B=1096
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=1240
+mem_heap_B=1072
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=1280
+mem_heap_B=1048
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=1320
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=1360
+mem_heap_B=1048
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=1384
+mem_heap_B=1056
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=1408
+mem_heap_B=1064
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=1432
+mem_heap_B=1072
+mem_heap_extra_B=72
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=1472
+mem_heap_B=1096
+mem_heap_extra_B=88
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=1512
+mem_heap_B=1120
+mem_heap_extra_B=104
+mem_stacks_B=0
+heap_tree=detailed
+n6: 1120 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n2: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108E01: test2 (06_debugging_and_valgrind_exercise_03.c:303)
+   n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 24 0x1087B7: createStructStorage (06_debugging_and_valgrind_exercise_03.c:35)
+  n1: 24 0x108E01: test2 (06_debugging_and_valgrind_exercise_03.c:303)
+   n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 24 0x108D7C: test2 (06_debugging_and_valgrind_exercise_03.c:294)
+  n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+ n1: 24 0x108DA8: test2 (06_debugging_and_valgrind_exercise_03.c:297)
+  n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+ n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=17
+#-----------
+time=1552
+mem_heap_B=1144
+mem_heap_extra_B=120
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=1592
+mem_heap_B=1168
+mem_heap_extra_B=136
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=1632
+mem_heap_B=1192
+mem_heap_extra_B=152
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=1632
+mem_heap_B=1192
+mem_heap_extra_B=152
+mem_stacks_B=0
+heap_tree=detailed
+n8: 1192 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n3: 48 0x10888D: insert (06_debugging_and_valgrind_exercise_03.c:82)
+  n1: 24 0x108E1B: test2 (06_debugging_and_valgrind_exercise_03.c:305)
+   n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+  n1: 24 0x108E35: test2 (06_debugging_and_valgrind_exercise_03.c:306)
+   n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108E01: test2 (06_debugging_and_valgrind_exercise_03.c:303)
+   n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 24 0x1087B7: createStructStorage (06_debugging_and_valgrind_exercise_03.c:35)
+  n1: 24 0x108E01: test2 (06_debugging_and_valgrind_exercise_03.c:303)
+   n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 24 0x108946: insertAt (06_debugging_and_valgrind_exercise_03.c:108)
+  n1: 24 0x108E51: test2 (06_debugging_and_valgrind_exercise_03.c:307)
+   n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+ n1: 24 0x108D7C: test2 (06_debugging_and_valgrind_exercise_03.c:294)
+  n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+ n1: 24 0x108DA8: test2 (06_debugging_and_valgrind_exercise_03.c:297)
+  n0: 24 0x109054: main (06_debugging_and_valgrind_exercise_03.c:367)
+ n0: 0 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=21
+#-----------
+time=1656
+mem_heap_B=1184
+mem_heap_extra_B=136
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1696
+mem_heap_B=1160
+mem_heap_extra_B=120
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1720
+mem_heap_B=1152
+mem_heap_extra_B=104
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1760
+mem_heap_B=1128
+mem_heap_extra_B=88
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=1784
+mem_heap_B=1120
+mem_heap_extra_B=72
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1824
+mem_heap_B=1096
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=1864
+mem_heap_B=1072
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=1904
+mem_heap_B=1048
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=1944
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=1984
+mem_heap_B=1048
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=detailed
+n3: 1048 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n2: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 0 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=31
+#-----------
+time=2024
+mem_heap_B=1072
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=2112
+mem_heap_B=1152
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=2136
+mem_heap_B=1160
+mem_heap_extra_B=64
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=2176
+mem_heap_B=1184
+mem_heap_extra_B=80
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=2200
+mem_heap_B=1192
+mem_heap_extra_B=96
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=2240
+mem_heap_B=1216
+mem_heap_extra_B=112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=2264
+mem_heap_B=1224
+mem_heap_extra_B=128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=2304
+mem_heap_B=1248
+mem_heap_extra_B=144
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=2328
+mem_heap_B=1256
+mem_heap_extra_B=160
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=2368
+mem_heap_B=1280
+mem_heap_extra_B=176
+mem_stacks_B=0
+heap_tree=detailed
+n7: 1280 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n2: 96 0x10888D: insert (06_debugging_and_valgrind_exercise_03.c:82)
+  n1: 96 0x108F6D: test3 (06_debugging_and_valgrind_exercise_03.c:336)
+   n0: 96 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n1: 80 0x108ED3: test3 (06_debugging_and_valgrind_exercise_03.c:329)
+  n0: 80 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n1: 32 0x108F02: test3 (06_debugging_and_valgrind_exercise_03.c:332)
+  n0: 32 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n2: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n2: 24 0x1087B7: createStructStorage (06_debugging_and_valgrind_exercise_03.c:35)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 0 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=2392
+mem_heap_B=1288
+mem_heap_extra_B=192
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=2432
+mem_heap_B=1312
+mem_heap_extra_B=208
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=2456
+mem_heap_B=1320
+mem_heap_extra_B=224
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=2496
+mem_heap_B=1344
+mem_heap_extra_B=240
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=2520
+mem_heap_B=1352
+mem_heap_extra_B=256
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=2560
+mem_heap_B=1376
+mem_heap_extra_B=272
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=2584
+mem_heap_B=1384
+mem_heap_extra_B=288
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=2624
+mem_heap_B=1408
+mem_heap_extra_B=304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=2648
+mem_heap_B=1416
+mem_heap_extra_B=320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=2688
+mem_heap_B=1440
+mem_heap_extra_B=336
+mem_stacks_B=0
+heap_tree=detailed
+n7: 1440 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n2: 216 0x10888D: insert (06_debugging_and_valgrind_exercise_03.c:82)
+  n1: 216 0x108F6D: test3 (06_debugging_and_valgrind_exercise_03.c:336)
+   n0: 216 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n1: 80 0x108ED3: test3 (06_debugging_and_valgrind_exercise_03.c:329)
+  n0: 80 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n1: 72 0x108F02: test3 (06_debugging_and_valgrind_exercise_03.c:332)
+  n0: 72 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n2: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n2: 24 0x1087B7: createStructStorage (06_debugging_and_valgrind_exercise_03.c:35)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 0 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=51
+#-----------
+time=2712
+mem_heap_B=1448
+mem_heap_extra_B=352
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=2752
+mem_heap_B=1472
+mem_heap_extra_B=368
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=2752
+mem_heap_B=1472
+mem_heap_extra_B=368
+mem_stacks_B=0
+heap_tree=peak
+n7: 1472 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n2: 240 0x10888D: insert (06_debugging_and_valgrind_exercise_03.c:82)
+  n1: 240 0x108F6D: test3 (06_debugging_and_valgrind_exercise_03.c:336)
+   n0: 240 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n1: 80 0x108ED3: test3 (06_debugging_and_valgrind_exercise_03.c:329)
+  n0: 80 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n1: 80 0x108F02: test3 (06_debugging_and_valgrind_exercise_03.c:332)
+  n0: 80 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n2: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n2: 24 0x1087B7: createStructStorage (06_debugging_and_valgrind_exercise_03.c:35)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 0 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=54
+#-----------
+time=2776
+mem_heap_B=1464
+mem_heap_extra_B=352
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=2816
+mem_heap_B=1440
+mem_heap_extra_B=336
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=2840
+mem_heap_B=1432
+mem_heap_extra_B=320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=2880
+mem_heap_B=1408
+mem_heap_extra_B=304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=2904
+mem_heap_B=1400
+mem_heap_extra_B=288
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=2944
+mem_heap_B=1376
+mem_heap_extra_B=272
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=2968
+mem_heap_B=1368
+mem_heap_extra_B=256
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=3008
+mem_heap_B=1344
+mem_heap_extra_B=240
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=3032
+mem_heap_B=1336
+mem_heap_extra_B=224
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=3072
+mem_heap_B=1312
+mem_heap_extra_B=208
+mem_stacks_B=0
+heap_tree=detailed
+n7: 1312 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n2: 120 0x10888D: insert (06_debugging_and_valgrind_exercise_03.c:82)
+  n1: 120 0x108F6D: test3 (06_debugging_and_valgrind_exercise_03.c:336)
+   n0: 120 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n1: 80 0x108ED3: test3 (06_debugging_and_valgrind_exercise_03.c:329)
+  n0: 80 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n1: 40 0x108F02: test3 (06_debugging_and_valgrind_exercise_03.c:332)
+  n0: 40 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n2: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n2: 24 0x1087B7: createStructStorage (06_debugging_and_valgrind_exercise_03.c:35)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 0 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=64
+#-----------
+time=3096
+mem_heap_B=1304
+mem_heap_extra_B=192
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=3136
+mem_heap_B=1280
+mem_heap_extra_B=176
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=3160
+mem_heap_B=1272
+mem_heap_extra_B=160
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=3200
+mem_heap_B=1248
+mem_heap_extra_B=144
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=3224
+mem_heap_B=1240
+mem_heap_extra_B=128
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=3264
+mem_heap_B=1216
+mem_heap_extra_B=112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=3288
+mem_heap_B=1208
+mem_heap_extra_B=96
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=3328
+mem_heap_B=1184
+mem_heap_extra_B=80
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=3352
+mem_heap_B=1176
+mem_heap_extra_B=64
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=3392
+mem_heap_B=1152
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1152 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4EB118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x4EC1377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x4EC0496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x4EBE9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x4EB3A8D: puts (ioputs.c:40)
+      n1: 1024 0x108CF2: test1 (06_debugging_and_valgrind_exercise_03.c:274)
+       n0: 1024 0x109040: main (06_debugging_and_valgrind_exercise_03.c:365)
+ n1: 80 0x108ED3: test3 (06_debugging_and_valgrind_exercise_03.c:329)
+  n0: 80 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+ n2: 24 0x1087A9: createStructStorage (06_debugging_and_valgrind_exercise_03.c:34)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n2: 24 0x1087B7: createStructStorage (06_debugging_and_valgrind_exercise_03.c:35)
+  n1: 24 0x108EC5: test3 (06_debugging_and_valgrind_exercise_03.c:327)
+   n0: 24 0x109068: main (06_debugging_and_valgrind_exercise_03.c:369)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 0 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=74
+#-----------
+time=3432
+mem_heap_B=1128
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=3472
+mem_heap_B=1104
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=3560
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=4592
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
