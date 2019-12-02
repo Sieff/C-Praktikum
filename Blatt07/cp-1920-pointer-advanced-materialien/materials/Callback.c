@@ -33,27 +33,8 @@ void fillMatrixWithResults(int height, double y_min, double y_max,
 	{
 		for(int x = 0; x < width; x++)
 		{
-			data[y][x] = (*foo)(y_min + y * y_step, x_min + x * x_step);
+			data[y][x] = (*foo)(x_min + x * x_step, y_min + y * y_step);
 		}
-	}
-}
-/*
-	fillMatrixWithResults(2, 1, 3,
-	                      3, -1, 1,
-	                      data, &foo);	
-
-	(1, -1)(1, 0)(1, 1)
-	(3, -1)(3, 0)(3, 1)
-*/
-
-void print2dArray(size_t height, size_t width, double data[height][width]) {
-	for(int y = 0; y < height; y++)
-	{
-		for(int x = 0; x < width; x++)
-		{
-			printf("%f ", data[y][x]);
-		}
-		printf("\n");
 	}
 }
 
@@ -70,11 +51,10 @@ int main() {
 	//may be used, is not required for grading
 	//print2dArray(height, width, data);
 
-	/* assert(data[0][0] == 2);
+	assert(data[0][0] == 2);
 	assert(data[0][1] == 1);
 	assert(data[0][2] == 2);
 	assert(data[1][0] == 4);
 	assert(data[1][1] == 3);
-	assert(data[1][2] == 4); */
-	print2dArray(height, width, data);
+	assert(data[1][2] == 4);
 }
