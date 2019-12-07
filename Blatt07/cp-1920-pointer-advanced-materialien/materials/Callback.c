@@ -24,11 +24,17 @@ double foo(double x, double y) {
 void fillMatrixWithResults(int height, double y_min, double y_max,
                            int width, double x_min, double x_max,
                            double data[height][width], double(*foo)(double, double)) {
+	
+	// Range berechnen, um Matrix für Intervall komplett zu füllen 
 	double y_range = y_max - y_min;
 	double x_range = x_max - x_min;
+
+	// Schrittweite innerhalb des Intervalls
 	double y_step = y_range / (height - 1);
 	double x_step = x_range / (width - 1);
 
+
+	// Matrix mit doppelter Schlife füllen
 	for(int y = 0; y < height; y++)
 	{
 		for(int x = 0; x < width; x++)
