@@ -42,6 +42,11 @@ char* formatMoney1(int64_t cents) {
 	asprintf(&result, "%s%"PRId64".%02"PRId64" euros", (isNegative ? "-" : ""), euros, cents);
 	return result;
 }
+
+/*
+berechnet den Euro- und den Centanteil aus den Cents,
+schreibt das ergebnis in den stream
+*/
 void formatMoney2(int64_t cents, FILE* stream) {
 	bool isNegative = cents < 0;
 	cents = (isNegative ? -cents : cents);
@@ -50,6 +55,12 @@ void formatMoney2(int64_t cents, FILE* stream) {
 
 	fprintf(stream, "%s%"PRId64".%02"PRId64" euros", (isNegative ? "-" : ""), euros, cents);
 }
+
+/*
+Erzeugt Stream, gibt ihn an formatMoney2 weiter
+Schließt Stream nach Benutzung
+
+*/
 char* formatMoney3(int64_t cents) {
 	char * ptr;
 	size_t size;
