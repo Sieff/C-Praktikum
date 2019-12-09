@@ -8,11 +8,42 @@ typedef struct {
 	double* data;
 } Stack;
 
-void Stack_construct(Stack* me) { assert(0 && "TODO"); }
-bool Stack_isEmpty(Stack* me) { assert(0 && "TODO"); }
-void Stack_push(Stack* me, double value) { assert(0 && "TODO"); }
-double Stack_pop(Stack* me) { assert(0 && "TODO"); }
-void Stack_destruct(Stack* me) { assert(0 && "TODO"); }
+void Stack_construct(Stack* me) {
+	double * data = malloc(8*sizeof(double));
+	me->data = data;
+	me->curCount = 0;
+	me->allocatedSize = 8;
+}
+
+bool Stack_isEmpty(Stack* me) {
+	return me->curCount == 0;
+}
+
+void Stack_push(Stack* me, double value) {
+	if(me->curCount == me->allocatedSize)
+	{
+		me->data = realloc(me->data, me->allocatedSize * 2 * sizeof(double));
+		me->allocatedSize *= 2;
+	}
+
+	me->data[me->curCount] = value;
+	me->curCount += 1;
+}
+double Stack_pop(Stack* me) {
+	double returnvalue = me->data[me->curCount - 1];
+	me->curCount -= 1;
+
+	if(me->curCount < me->allocatedSize / 2)
+	{
+		me->data = realloc(me->data, (me->allocatedSize / 2) * sizeof(double));
+		me->allocatedSize /= 2;
+	}
+	return returnvalue;
+}
+
+void Stack_destruct(Stack* me) {
+	free(me->data);
+}
 
 double calculate(char* expression) {
 	Stack myStack;
