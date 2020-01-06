@@ -24,36 +24,23 @@ double foo(double x, double y) {
 void fillMatrixWithResults(int height, double y_min, double y_max,
                            int width, double x_min, double x_max,
                            double data[height][width], double(*foo)(double, double)) {
+	
+	// Range berechnen, um Matrix für Intervall komplett zu füllen 
 	double y_range = y_max - y_min;
 	double x_range = x_max - x_min;
+
+	// Schrittweite innerhalb des Intervalls
 	double y_step = y_range / (height - 1);
 	double x_step = x_range / (width - 1);
 
+
+	// Matrix mit doppelter Schlife füllen
 	for(int y = 0; y < height; y++)
 	{
 		for(int x = 0; x < width; x++)
 		{
-			data[y][x] = (*foo)(y_min + y * y_step, x_min + x * x_step);
+			data[y][x] = (*foo)(x_min + x * x_step, y_min + y * y_step);
 		}
-	}
-}
-/*
-	fillMatrixWithResults(2, 1, 3,
-	                      3, -1, 1,
-	                      data, &foo);	
-
-	(1, -1)(1, 0)(1, 1)
-	(3, -1)(3, 0)(3, 1)
-*/
-
-void print2dArray(size_t height, size_t width, double data[height][width]) {
-	for(int y = 0; y < height; y++)
-	{
-		for(int x = 0; x < width; x++)
-		{
-			printf("%f ", data[y][x]);
-		}
-		printf("\n");
 	}
 }
 
@@ -70,11 +57,10 @@ int main() {
 	//may be used, is not required for grading
 	//print2dArray(height, width, data);
 
-	/* assert(data[0][0] == 2);
+	assert(data[0][0] == 2);
 	assert(data[0][1] == 1);
 	assert(data[0][2] == 2);
 	assert(data[1][0] == 4);
 	assert(data[1][1] == 3);
-	assert(data[1][2] == 4); */
-	print2dArray(height, width, data);
+	assert(data[1][2] == 4);
 }

@@ -47,18 +47,10 @@ void fillMatrixWithResults(int height, double y_min, double y_max,
 	{
 		for(int x = 0; x < width; x++)
 		{
-			data[y][x] = (*foo)(y_min + y * y_step, x_min + x * x_step);
+			data[y][x] = (*foo)(x_min + x * x_step, y_min + y * y_step);
 		}
 	}
 }
-/*
-	fillMatrixWithResults(2, 1, 3,
-	                      3, -1, 1,
-	                      data, &foo);	
-
-	(1, -1)(1, 0)(1, 1)
-	(3, -1)(3, 0)(3, 1)
-*/
 
 int main() {
 	//Aufruf für Funktion f
