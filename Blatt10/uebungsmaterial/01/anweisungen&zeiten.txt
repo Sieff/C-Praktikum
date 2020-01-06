@@ -1,0 +1,30 @@
+static:
+
+Anweisungen:
+
+gcc -c matrixOps.c
+ar rcs libmatrixOps.a matrixOps.o
+gcc 10_modularitaet_01.c -L./include -lmatrixOps
+
+Zeiten:
+
+real	0m0,002s
+user	0m0,003s
+sys	0m0,000s
+
+shared:
+
+Anweisungen:
+
+gcc -c -fPIC matrixOps.c
+gcc -shared -o libmatrixOps.so matrixOps.o
+gcc 10_modularitaet_01.c -L./include -lmatrixOps
+LD_LIBRARY_PATH=./include:$LD_LIBRARY_PATH ./a.out
+
+Zeiten:
+
+real	0m0,003s
+user	0m0,001s
+sys	0m0,002s
+
+
