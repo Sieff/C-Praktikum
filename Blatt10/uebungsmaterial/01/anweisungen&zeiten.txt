@@ -7,10 +7,28 @@ ar rcs libmatrixOps.a matrixOps.o
 gcc 10_modularitaet_01.c -L./include -lmatrixOps
 
 Zeiten:
+gcc -c matrixOps.c:
+real	0m0,054s
+user	0m0,044s
+sys	0m0,010s
 
+ar rcs libmatrixOps.a matrixOps.o
+real	0m0,008s
+user	0m0,005s
+sys	0m0,000s
+
+gcc 10_modularitaet_01.c -L./include -lmatrixOps
+real	0m0,074s
+user	0m0,047s
+sys	0m0,018s
+
+./a.out:
 real	0m0,002s
 user	0m0,003s
 sys	0m0,000s
+
+
+
 
 shared:
 
@@ -22,7 +40,22 @@ gcc 10_modularitaet_01.c -L./include -lmatrixOps
 LD_LIBRARY_PATH=./include:$LD_LIBRARY_PATH ./a.out
 
 Zeiten:
+gcc -c -fPIC matrixOps.c:
+real	0m0,060s
+user	0m0,046s
+sys	0m0,012s
 
+gcc -shared -o libmatrixOps.so matrixOps.o:
+real	0m0,039s
+user	0m0,022s
+sys	0m0,017s
+
+gcc 10_modularitaet_01.c -L./include -lmatrixOps:
+real	0m0,069s
+user	0m0,039s
+sys	0m0,029s
+
+LD_LIBRARY_PATH=./include:$LD_LIBRARY_PATH ./a.out:
 real	0m0,003s
 user	0m0,001s
 sys	0m0,002s
