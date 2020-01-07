@@ -1,12 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//Matrix Datenstruktur
 typedef struct
 {
 	int **data;
 	int dim;
 } matrix;
 
+//Erzeugt eine Neue Matrix, gibt Matrix zurück
+//Matrix gefüllt mit Zufallszahlen von 1-10
+//Matrix ist quadratisch, Dimension ist wie wählbar
+//Die Daten sind auf dem Heap, das Struct im Stack
 matrix newMatrix(int matrixDim)
 {
 	int ** ptr = malloc(sizeof(int) * matrixDim);
@@ -30,6 +35,7 @@ matrix newMatrix(int matrixDim)
 	return m;
 }
 
+//Addiert zwei quadratische Matrizen
 matrix addMatrices(matrix m1, matrix m2, int matrixDim)
 {
 	int ** ptr = (int**) malloc(sizeof(int) * matrixDim * matrixDim);
@@ -53,6 +59,7 @@ matrix addMatrices(matrix m1, matrix m2, int matrixDim)
 	return m;
 }
 
+//berechnet eine Zelle für die Multiplikation zweier Matrizen
 int berechneZelle(int * zeile, matrix m2, int spaltenIndex, int matrixDim)
 {
 	int sum = 0;
@@ -63,6 +70,7 @@ int berechneZelle(int * zeile, matrix m2, int spaltenIndex, int matrixDim)
 	return sum;
 }
 
+//gibt eine Matrix auf der Konsole aus
 void print2dArray(size_t matrixDim, int **data) {
 	for(int x = 0; x < matrixDim; x++)
 	{
@@ -74,6 +82,7 @@ void print2dArray(size_t matrixDim, int **data) {
 	}
 }
 
+//gibt eine Rechenanweisung und das Ergebnis auf der Konsole aus
 void printCalculation(matrix m1, matrix m2, matrix ergebnis, char* operator)
 {
 	print2dArray(m1.dim, m1.data);
@@ -85,7 +94,7 @@ void printCalculation(matrix m1, matrix m2, matrix ergebnis, char* operator)
 }
 
 
-
+//Multipliziert zwei Matrizen
 matrix mulMatrices(matrix m1, matrix m2, int matrixDim)
 {
 	int ** ptr = (int**) malloc(sizeof(int) * matrixDim * matrixDim);
@@ -109,6 +118,7 @@ matrix mulMatrices(matrix m1, matrix m2, int matrixDim)
 	return m;
 }
 
+//Gibt den Speicherplatz für eine Matrix frei
 void freeMatrix(matrix m)
 {
 	for(int i = 0; i < m.dim; i++)
