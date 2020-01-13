@@ -8,9 +8,27 @@
 void read_file(int fd)
 {
 	int buf;
+	ssize_t nb;
+	struct stat st;
+	//char * linkbuf;
+	//char * link;
+	//snprintf(linkbuf, sizeof(char) * 100, "/proc/pid/fd/%d", fd);
+	//printf("%s\n", linkbuf);
+	//char * linkpre = "/proc/pid/fd/";
+	//readlink(linkbuf, link, 100 * sizeof(char));
+	int ret = stat("myfile", &st);
+	assert(ret == 0);
 
-	// TODO
-	printf("int=%d at offset=%lu\n", buf, 0);
+	for(int i = 0; i < st.st_size / 4; i++)
+	{
+		nb = pread(fd, &buf, sizeof(fd), i*4);
+		assert(nb == sizeof(fd));
+		if(buf != 0)
+		{
+			printf("int=%d at offset=%d\n", buf, 4*i);
+		}
+	}
+	
 }
 
 int main(void)
