@@ -35,8 +35,9 @@ void array_append(struct array* arr, int age, char* name)
 
 void array_init(struct array* arr, off_t size)
 {
-	//Ein zähler für die Anzahl Elemente
-	int counter = 0;
+	//Größe und Anzahl der Elemente werden belegt
+	arr->size = size;
+	arr->count = 0;
 
 	int nb;
 	struct array_element buf; 
@@ -58,11 +59,10 @@ void array_init(struct array* arr, off_t size)
 
 		//Falls der erste Char des Namen = 0 ist kann es sich um keinen Echten Namen handeln,
 		//dementsprechend ist dies kein Element mehr was aufgenommen werden muss -> break
-		//Ansonsten wird es appended und der Zähler erhöht
+		//Ansonsten wird es appended
 		if(buf.name[0] != 0)
 		{
 			array_append(arr, buf.age, buf.name);
-			counter = counter + 1;
 		}
 		else
 		{
@@ -70,10 +70,6 @@ void array_init(struct array* arr, off_t size)
 		}
 	}
 	
-	//Größe und Anzahl der Elemente werden belegt
-	arr->size = size;
-	arr->count = counter;
-
 	//myarray wird geschlossen
 	close(fd);
 }
