@@ -38,7 +38,7 @@ void array_init(struct array* arr, off_t size)
 	//Größe und Anzahl der Elemente werden belegt
 	arr->size = size;
 	arr->count = 0;
-
+/*
 	int nb;
 	struct array_element buf; 
 
@@ -71,7 +71,7 @@ void array_init(struct array* arr, off_t size)
 	}
 	
 	//myarray wird geschlossen
-	close(fd);
+	close(fd); */
 }
 
 void array_reset(struct array* arr)
@@ -103,10 +103,10 @@ int main(void)
 	//myarray wird geöffnet
 	int fd;
 	fd = open("myarray", O_RDWR | O_CREAT, 0600);
-
+	
 	//Das struct wird erstellt und gemapped
 	struct array * arr = mmap(NULL, sizeof(struct array), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-
+	
 	array_init(arr, 1024);
 	array_print(arr);	
 

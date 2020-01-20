@@ -10,12 +10,6 @@ void read_file(int fd)
 	int buf;
 	ssize_t nb;
 	struct stat st;
-	//char * linkbuf;
-	//char * link;
-	//snprintf(linkbuf, sizeof(char) * 100, "/proc/pid/fd/%d", fd);
-	//printf("%s\n", linkbuf);
-	//char * linkpre = "/proc/pid/fd/";
-	//readlink(linkbuf, link, 100 * sizeof(char));
 	int ret = stat("myfile", &st);
 	assert(ret == 0);
 
