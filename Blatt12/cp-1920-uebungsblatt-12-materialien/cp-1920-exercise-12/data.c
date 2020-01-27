@@ -76,10 +76,10 @@ data* data_ref (data* data)
 void data_unref (data* data)
 {
 	
-		// Der referenzen Zähler wird um 1 verringert
+	// Der referenzen Zähler wird um 1 verringert
 	data->refcount--;
 
-		// Wenn das struct nicht mehr referenziert wird, wird der allokierte Speicher freigegeben
+	// Wenn das struct nicht mehr referenziert wird, wird der allokierte Speicher freigegeben
 	if(data->refcount == 0)
 	{
 		free(data->content);
@@ -111,22 +111,9 @@ char* data_as_string (data const* data)
 	{
 		// string wird initialisiert
 		string = malloc((9 + data->length) * sizeof(char));
-		// maximale Stringlänge zu ausgeben is 8192 Character
-		int maxLength = 8192;
-		// string wird mit "String: " und dem content des Structs befüllt
-		if (data->length > maxLength)
-		{
-			sprintf(string, "%s", "String too long to be displayed");
-		} 
-		else
-		{
-			char arr[8192] = "";
-			for(int i = 0; i < data->length; i++)
-			{	
-				arr[i] = data->content[i];
-			}
-			sprintf(string, "String: %s", arr);
-		}
+		//String mit Inhalt füllen
+		sprintf(string, "%s", "String: ");
+		strncat(string, data->content, data->length);
 	}
 
 	return string;
