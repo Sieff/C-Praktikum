@@ -4,38 +4,53 @@
 #include <stdio.h>
 #include <string.h>
 #include "data.h"
-int hash = 0;
+
+// data Datenstruktur zur speicherung eines strings oder blobs
 struct data
 {
-	//String Blob Counter
+	// Das Objekt
 	char* content;
+	// Länge des Objekts
 	int length;
-	//char[] blob;
+	// Zähler für referenzen
 	int refcount;
+	// Ob das Objekt ein blob ist
 	bool isBlob;
 };
 
 /* "content" is a null-terminated string. */
 data* data_new_string (char const* content)
 {
+	// Speicher für das struct allokieren
 	data * data = malloc(sizeof(data));
 	
+	// Zählen der Länge des strings
 	for(data->length = 0; content[data->length] != '\0'; ++data->length);
+
+	// Allokieren des Speichers für den string
 	data->content = (char*)malloc(data->length*sizeof(char));
+
+	// Initialisierung der Felder im struct
 	for(int i = 0; i < data->length; i++)
 	{
 		data->content[i] = content[i];
 	}
 	data->refcount = 0;
 	data->isBlob = false;
+
 	return data;
 }
 
 /* "content" is a blob of length "length". */
 data* data_new_blob (char const* content, unsigned int length)
 {
+	// Speicher für das struct allokieren
 	data * data = malloc(sizeof(data));
+
+	// Allokieren des Speichers für das Objekt
 	data->content = (char*)malloc(length * sizeof(char));
+
+	// Initialisierung der Felder im struct
 	for(unsigned int i = 0; i < length; i++)
 	{
 		data->content[i] = content[i];
@@ -43,9 +58,11 @@ data* data_new_blob (char const* content, unsigned int length)
 	data->length = length;
 	data->refcount = 0;
 	data->isBlob = true;
+
 	return data;
 }
 
+// Erhöht den Zähler der Referenzen im struct
 data* data_ref (data* data)
 {
 	data->refcount++;
@@ -55,7 +72,10 @@ data* data_ref (data* data)
 /* Frees memory allocated by "data" if reference count reaches 0. */
 void data_unref (data* data)
 {
+	// Der referenzen Zähler wird um 1 verringert
 	data->refcount--;
+
+	// Wenn das struct nicht mehr referenziert wird, wird der allokierte Speicher freigegeben
 	if(data->refcount == 0)
 	{
 		free(data->content);
@@ -66,62 +86,61 @@ void data_unref (data* data)
 /* Returns a newly-allocated string that must be freed by the caller. */
 char* data_as_string (data const* data)
 {
+	// String für die Rückgabe wird deklafiert
 	char * string;
 	
+	// Wenn der content ein blob ist gibt es eine andere Behandlung als für einen String
 	if(data->isBlob)
 	{
-		char adress[100];
-		sprintf(adress, "%p", data->content);
-		string = (char*)malloc((7 + strlen(adress)) * sizeof(char));
-		sprintf(string, "Blob: %s", adress);
+		// Char array für die adresse deklariert
+		char address[100];
+		// address wird befüllt mit der Adresse des contents
+		sprintf(address, "%p", data->content);
+		// string wird initialisiert
+		string = (char*)malloc((7 + strlen(address)) * sizeof(char));
+		// string wird mit "Blob: " und der Adresse befüllt
+		sprintf(string, "Blob: %s", address);
 	}
 	else
 	{
+		// string wird initialisiert
 		string = (char*)malloc((9 + data->length) * sizeof(char));
+		// string wird mit "String: " und dem content des Structs befüllt
 		sprintf(string, "String: %s", data->content);
 	}
+
 	return string;
 }
 
-/*unsigned int data_hash(data const* data)
-{
-    unsigned int hash, i;
-    for(hash = i = 0; i < (unsigned int)data->length; ++i)
-    {
-        hash += data->content[i];
-        hash += (hash << 10);
-        hash ^= (hash >> 6);
-    }
-    hash += (hash << 3);
-    hash ^= (hash >> 11);
-    hash += (hash << 15);
+// Berechnung eines Hashes für das Struct
+unsigned int data_hash(data const * data) 
+{ 
+	// Startwert für den Hash wird festgelegt
+   	size_t hash = 420;
 
-	printf("%u %s %p\n", hash % 1024, data->content, data->content);
-    return hash;
-} */
+   	// Abhängig von dem content im struct wird ein Hashwert berechnet
+   	const char * cp = data->content;
+   	while(*cp)
+   	{
+   		hash = 33 * hash ^ (unsigned char) *cp++;
+   	}
 
-unsigned int data_hash(data const* data)
-{
-    return hash++;
-}
+   	return hash; 
+} 
 
 int data_cmp (data const* a, data const* b)
-{
-	int length;
-	int ret = 0;
-	
+{	
+	// 
 	if(a->length < b->length)
 	{
-		ret = -1;
-		length = a->length;
+		return -1;
 	}
 	else if(a->length > b->length)
 	{
-		ret = 1;
-		length = b->length;
+		return 1;
 	}
 
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < a->length; i++)
 	{
 		if((int)a->content[i] > (int)b->content[i])
 		{
@@ -133,5 +152,5 @@ int data_cmp (data const* a, data const* b)
 			return -1;
 		}
 	}
-	return ret;
+	return 0;
 }
