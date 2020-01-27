@@ -83,7 +83,7 @@ end:
 	{
 		if (array[i] != NULL)
 		{
-			data_unref(array[i]);
+			//data_unref(array[i]);
 			array[i] = NULL;
 		}
 	}

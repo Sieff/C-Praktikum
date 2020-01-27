@@ -22,44 +22,46 @@ struct data
 data* data_new_string (char const* content)
 {
 	// Speicher für das struct allokieren
-	data * data = malloc(sizeof(data));
+	data * daten = malloc(sizeof(data));
 	
 	// Zählen der Länge des strings
-	for(data->length = 0; content[data->length] != '\0'; ++data->length);
+	int length;
+	for(length = 1; content[length] != '\0'; ++length);
+	daten->length = length;
 
 	// Allokieren des Speichers für den string
-	data->content = (char*)malloc(data->length*sizeof(char));
+	daten->content = (char*)malloc(daten->length * sizeof(char));
 
 	// Initialisierung der Felder im struct
-	for(int i = 0; i < data->length; i++)
+	for(int i = 0; i < daten->length; i++)
 	{
-		data->content[i] = content[i];
+		daten->content[i] = content[i];
 	}
-	data->refcount = 0;
-	data->isBlob = false;
+	daten->refcount = 0;
+	daten->isBlob = false;
 
-	return data;
+	return daten;
 }
 
 /* "content" is a blob of length "length". */
 data* data_new_blob (char const* content, unsigned int length)
 {
 	// Speicher für das struct allokieren
-	data * data = malloc(sizeof(data));
+	data * daten = malloc(sizeof(data));
 
 	// Allokieren des Speichers für das Objekt
-	data->content = (char*)malloc(length * sizeof(char));
+	daten->content = (char*)malloc(length * sizeof(char));
 
 	// Initialisierung der Felder im struct
 	for(unsigned int i = 0; i < length; i++)
 	{
-		data->content[i] = content[i];
+		daten->content[i] = content[i];
 	}
-	data->length = length;
-	data->refcount = 0;
-	data->isBlob = true;
+	daten->length = length;
+	daten->refcount = 0;
+	daten->isBlob = true;
 
-	return data;
+	return daten;
 }
 
 // Erhöht den Zähler der Referenzen im struct
@@ -72,17 +74,20 @@ data* data_ref (data* data)
 /* Frees memory allocated by "data" if reference count reaches 0. */
 void data_unref (data* data)
 {
-	// Der referenzen Zähler wird um 1 verringert
-	printf("%d\n", data->refcount);
-	data->refcount--;
-	printf("%d\n", data->refcount);
-
-	// Wenn das struct nicht mehr referenziert wird, wird der allokierte Speicher freigegeben
-	if(data->refcount == 0)
+	if(data)
 	{
-		free(data->content);
-		free(data);
+		// Der referenzen Zähler wird um 1 verringert
+		data->refcount--;
+
+		// Wenn das struct nicht mehr referenziert wird, wird der allokierte Speicher freigegeben
+		if(data->refcount == 0)
+		{
+			free(data->content);
+			free(data);
+			data = NULL;
+		}
 	}
+	
 }
 
 /* Returns a newly-allocated string that must be freed by the caller. */
@@ -106,7 +111,7 @@ char* data_as_string (data const* data)
 	else
 	{
 		// string wird initialisiert
-		string = (char*)malloc((9 + data->length) * sizeof(char));
+		string = malloc((9 + data->length) * sizeof(char));
 		// string wird mit "String: " und dem content des Structs befüllt
 		sprintf(string, "String: %s", data->content);
 	}
@@ -118,16 +123,21 @@ char* data_as_string (data const* data)
 unsigned int data_hash(data const * data) 
 { 
 	// Startwert für den Hash wird festgelegt
-   	size_t hash = 420;
+	size_t hash = 420;
 
    	// Abhängig von dem content im struct wird ein Hashwert berechnet
-   	const char * cp = data->content;
-   	while(*cp)
-   	{
-   		hash = 33 * hash ^ (unsigned char) *cp++;
-   	}
+	char string[data->length];
 
-   	return hash; 
+	for(int i = 0; i < data->length; i++)
+	{
+		string[i] = data->content[i];
+	}
+	for(int i = 0; i < data->length; i++)
+	{
+		hash = 33 * hash ^ (unsigned char) string[i];
+	}
+
+	return hash; 
 } 
 
 int data_cmp (data const* a, data const* b)
