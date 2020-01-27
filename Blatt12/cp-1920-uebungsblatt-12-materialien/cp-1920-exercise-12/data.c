@@ -73,7 +73,9 @@ data* data_ref (data* data)
 void data_unref (data* data)
 {
 	// Der referenzen Zähler wird um 1 verringert
+	printf("%d\n", data->refcount);
 	data->refcount--;
+	printf("%d\n", data->refcount);
 
 	// Wenn das struct nicht mehr referenziert wird, wird der allokierte Speicher freigegeben
 	if(data->refcount == 0)
@@ -130,16 +132,19 @@ unsigned int data_hash(data const * data)
 
 int data_cmp (data const* a, data const* b)
 {	
-	// 
+	// Wenn a kürzer ist als b -> -1
 	if(a->length < b->length)
 	{
 		return -1;
 	}
-	else if(a->length > b->length)
+
+	// Wenn b kürzer ist als a -> 1
+	if(a->length > b->length)
 	{
 		return 1;
 	}
 
+	// Wenn beide gleich lang sind wird eintrag für eintrag verglichen
 	for(int i = 0; i < a->length; i++)
 	{
 		if((int)a->content[i] > (int)b->content[i])
@@ -152,5 +157,7 @@ int data_cmp (data const* a, data const* b)
 			return -1;
 		}
 	}
+
+	// Falls a und b genau gleich sind -> 0
 	return 0;
 }
