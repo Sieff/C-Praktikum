@@ -1,7 +1,8 @@
 #include <assert.h>
 #include <stdlib.h>
-#include<stdio.h>
-#include<math.h>
+#include <stdio.h>
+#include <math.h>
+#include "2dArrayPrint.h"
 
 double foo(double x, double y) {
 	return x*x + y;
@@ -48,17 +49,6 @@ void fillMatrixWithResults(int height, double y_min, double y_max,
 		{
 			data[y][x] = (*foo)(x_min + x * x_step, y_min + y * y_step);
 		}
-	}
-}
-
-void print2dArray(size_t height, size_t width, double data[height][width]) {
-	for(int y = 0; y < height; y++)
-	{
-		for(int x = 0; x < width; x++)
-		{
-			printf("%f ", data[y][x]);
-		}
-		printf("\n");
 	}
 }
 

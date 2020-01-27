@@ -1,0 +1,13 @@
+Startup:
+
+gcc -c -fPIC eingabeTrafo.c
+gcc -shared -o libeingabeTrafo.so eingabeTrafo.o
+gcc 10_modularitaet_02.c -L. -leingabeTrafo -lm
+LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./a.out
+
+
+Bildstörung:
+
+gcc -c -fPIC graph.c
+gcc -shared -o libgraph.so graph.o
+LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH LD_PRELOAD=./libgraph.so ./a.out
