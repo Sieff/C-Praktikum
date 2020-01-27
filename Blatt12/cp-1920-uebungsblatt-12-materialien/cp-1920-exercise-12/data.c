@@ -27,17 +27,18 @@ data* data_new_string (char const* content)
 	// Zählen der Länge des strings
 	int length;
 	for(length = 1; content[length] != '\0'; ++length);
+	
 	daten->length = length;
 
 	// Allokieren des Speichers für den string
-	daten->content = (char*)malloc(daten->length * sizeof(char));
+	daten->content = malloc(daten->length * sizeof(char));
 
 	// Initialisierung der Felder im struct
 	for(int i = 0; i < daten->length; i++)
 	{
 		daten->content[i] = content[i];
 	}
-	daten->refcount = 0;
+	daten->refcount = 1;
 	daten->isBlob = false;
 
 	return daten;
@@ -50,7 +51,7 @@ data* data_new_blob (char const* content, unsigned int length)
 	data * daten = malloc(sizeof(data));
 
 	// Allokieren des Speichers für das Objekt
-	daten->content = (char*)malloc(length * sizeof(char));
+	daten->content = malloc(length * sizeof(char));
 
 	// Initialisierung der Felder im struct
 	for(unsigned int i = 0; i < length; i++)
@@ -58,7 +59,7 @@ data* data_new_blob (char const* content, unsigned int length)
 		daten->content[i] = content[i];
 	}
 	daten->length = length;
-	daten->refcount = 0;
+	daten->refcount = 1;
 	daten->isBlob = true;
 
 	return daten;
@@ -74,19 +75,17 @@ data* data_ref (data* data)
 /* Frees memory allocated by "data" if reference count reaches 0. */
 void data_unref (data* data)
 {
-	if(data)
-	{
+	
 		// Der referenzen Zähler wird um 1 verringert
-		data->refcount--;
+	data->refcount--;
 
 		// Wenn das struct nicht mehr referenziert wird, wird der allokierte Speicher freigegeben
-		if(data->refcount == 0)
-		{
-			free(data->content);
-			free(data);
-			data = NULL;
-		}
+	if(data->refcount == 0)
+	{
+		free(data->content);
+		free(data);
 	}
+	
 	
 }
 
@@ -112,8 +111,22 @@ char* data_as_string (data const* data)
 	{
 		// string wird initialisiert
 		string = malloc((9 + data->length) * sizeof(char));
+		// maximale Stringlänge zu ausgeben is 8192 Character
+		int maxLength = 8192;
 		// string wird mit "String: " und dem content des Structs befüllt
-		sprintf(string, "String: %s", data->content);
+		if (data->length > maxLength)
+		{
+			sprintf(string, "%s", "String too long to be displayed");
+		} 
+		else
+		{
+			char arr[8192] = "";
+			for(int i = 0; i < data->length; i++)
+			{	
+				arr[i] = data->content[i];
+			}
+			sprintf(string, "String: %s", arr);
+		}
 	}
 
 	return string;
